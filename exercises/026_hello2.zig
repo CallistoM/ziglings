@@ -5,6 +5,8 @@
 //
 const std = @import("std");
 
+const MyError = error{PowerfulError};
+
 // Take note that this main() definition now returns "!void" rather
 // than just "void". Since there's no specific error type, this means
 // that Zig will infer the error type. This is appropriate in the case
@@ -14,7 +16,7 @@ const std = @import("std");
 // You can find more information at:
 // https://ziglang.org/documentation/master/#Inferred-Error-Sets
 //
-pub fn main() !void {
+pub fn main() anyerror!void {
     // We get a Writer for Standard Out so we can print() to it.
     const stdout = std.io.getStdOut().writer();
 
@@ -23,5 +25,5 @@ pub fn main() !void {
     // to be able to pass it up as a return value of main().
     //
     // We just learned of a single statement which can accomplish this.
-    stdout.print("Hello world!\n", .{});
+    try stdout.print("Hello world!\n", .{});
 }

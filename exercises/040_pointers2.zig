@@ -19,11 +19,21 @@
 // Think of mutable data as being volatile or even dangerous. Zig
 // always lets you be "more safe" and never "less safe."
 //
+//
+// A cheatsheet given the above declarations:
+//
+//     u8         the type of a u8 value
+//     foo        the value 5
+//     *u8        the type of a pointer to a u8 value
+//     &foo       a reference to foo
+//     bar        a pointer to the value at foo
+//     bar.*      the value 5 (the dereferenced value "at" bar)
+//
 const std = @import("std");
 
 pub fn main() void {
     const a: u8 = 12;
-    const b: *u8 = &a; // fix this!
+    const b: *const u8 = &a; // fix this!
 
     std.debug.print("a: {}, b: {}\n", .{ a, b.* });
 }
