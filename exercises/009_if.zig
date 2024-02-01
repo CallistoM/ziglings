@@ -20,7 +20,7 @@
 //
 const std = @import("std");
 
-pub fn main() void {
+pub fn main() !void {
     const foo = true;
 
     // Please fix this condition:
